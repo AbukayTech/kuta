@@ -28,14 +28,14 @@ This project adheres to a code of conduct. By participating, you are expected to
 - ✅ Accept constructive criticism gracefully
 - ❌ Don't harass, troll, or discriminate
 
-Please read and follow our [Code of Conduct](https://github.com/AbukayTech/kuta/blob/main/CODE_OF_CONDUCT.md).
+Please read and follow our [Code of Conduct](https://github.com/lborres/kuta/blob/main/CODE_OF_CONDUCT.md).
 
 ## How Can I Contribute?
 
 ### Reporting Bugs
 
 Before creating a bug report:
-1. Check existing [Issues](https://github.com/AbukayTech/kuta/issues) to avoid duplicates
+1. Check existing [Issues](https://github.com/lborres/kuta/issues) to avoid duplicates
 2. Collect information about the bug (version, steps to reproduce, error messages)
 
 **Create a bug report with:**
@@ -134,4 +134,4 @@ Commit message format:
 ```
 
 ## License
-By contributing to the Kuta project, you agree that your contributions will be licensed under the project's stated [LICENSE](https://github.com/AbukayTech/kuta/blob/main/LICENSE.md).
+By contributing to the Kuta project, you agree that your contributions will be licensed under the project's stated [LICENSE](https://github.com/lborres/kuta/blob/main/LICENSE.md).

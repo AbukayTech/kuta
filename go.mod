@@ -1,3 +1,3 @@
-module github.com/AbukayTech/kuta
+module github.com/lborres/kuta
 
 go 1.25.4

@@ -7,7 +7,7 @@ Greatly inspired by [Better Auth](https://github.com/better-auth/better-auth).
 
 ## Installation
 ```sh
-go get github.com/AbukayTech/kuta
+go get github.com/lborres/kuta
 ```
 
 ## Credits

@@ -47,7 +47,7 @@ Only the **latest version** of Kuta will be support
 ## Security Advisories
 Security advisories will be published at:
 
-- GitHub Security Advisories: https://github.com/AbukayTech/kuta/security/advisories
+- GitHub Security Advisories: https://github.com/lborres/kuta/security/advisories
 - This SECURITY.md file
 
 ## Acknowledgments
@@ -63,4 +63,4 @@ We appreciate responsible disclosure and will acknowledge security researchers w
 ## Contact
 For security concerns: [lborresbusiness@gmail.com](mailto:lborresbusiness@gmail.com)
 
-For general questions: [GitHub Issues](https://github.com/AbukayTech/kuta/issues)
+For general questions: [GitHub Issues](https://github.com/lborres/kuta/issues)
