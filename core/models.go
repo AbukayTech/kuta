@@ -36,9 +36,9 @@ type Session struct {
 	ID        string    `json:"id"`
 	UserID    string    `json:"userId"`
 	Token     string    `json:"-"` // Never expose in JSON (security!)
-	ExpiresAt time.Time `json:"expiresAt"`
 	IPAddress string    `json:"ipAddress"`
 	UserAgent string    `json:"userAgent"`
+	ExpiresAt time.Time `json:"expiresAt"`
 	CreatedAt time.Time `json:"createdAt"`
 	UpdatedAt time.Time `json:"updatedAt"`
 }
