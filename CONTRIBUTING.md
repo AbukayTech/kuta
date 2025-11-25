@@ -90,7 +90,7 @@ Areas we'd love help with:
 - [ ] Performance optimizations
 
 ## Branch Organization
-Code that lands in main must be compatible with the latest stable release. It may contain additional features, but no breaking changes. We should be able to release a new minor version from the tip of main at any time.
+Code that lands in `main` must be compatible with the latest stable release. It may contain additional features, but no breaking changes. We should be able to release a new minor version from the tip of main at any time.
 
 ## Commit Message Format
 Please see the [Conventional Commits Specifications](https://www.conventionalcommits.org/en/v1.0.0/).
