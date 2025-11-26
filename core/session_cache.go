@@ -12,6 +12,11 @@ type SessionCache interface {
 	Clear() error
 }
 
+type SessionCacheConfig struct {
+	TTL     time.Duration
+	MaxSize int
+}
+
 type InMemoryCache struct {
 	cache   map[string]*cachedEntry // key: token hash
 	mu      sync.RWMutex
@@ -24,18 +29,18 @@ type cachedEntry struct {
 	cachedAt time.Time
 }
 
-func NewInMemoryCache(ttl time.Duration, maxSize int) *InMemoryCache {
-	if ttl == 0 {
-		ttl = 5 * time.Minute
+func NewInMemoryCache(c SessionCacheConfig) *InMemoryCache {
+	if c.TTL == 0 {
+		c.TTL = 5 * time.Minute
 	}
-	if maxSize == 0 {
-		maxSize = 500
+	if c.MaxSize == 0 {
+		c.MaxSize = 500
 	}
 
 	return &InMemoryCache{
 		cache:   make(map[string]*cachedEntry),
-		ttl:     ttl,
-		maxSize: maxSize,
+		ttl:     c.TTL,
+		maxSize: c.MaxSize,
 	}
 }
 

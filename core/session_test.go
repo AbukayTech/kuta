@@ -486,7 +486,10 @@ func TestSessionManagerConcurrentVerify(t *testing.T) {
 
 func TestSessionManagerWithCacheHit(t *testing.T) {
 	storage := NewMockSessionStorage()
-	cache := NewInMemoryCache(5*time.Minute, 500)
+	cache := NewInMemoryCache(SessionCacheConfig{
+		TTL:     5 * time.Minute,
+		MaxSize: 500,
+	})
 	manager := NewSessionManager(DefaultSessionConfig(), storage, cache)
 
 	// Create session
@@ -519,7 +522,10 @@ func TestSessionManagerWithCacheHit(t *testing.T) {
 
 func TestSessionManagerWithCacheMiss(t *testing.T) {
 	storage := NewMockSessionStorage()
-	cache := NewInMemoryCache(5*time.Minute, 500)
+	cache := NewInMemoryCache(SessionCacheConfig{
+		TTL:     5 * time.Minute,
+		MaxSize: 500,
+	})
 	manager := NewSessionManager(DefaultSessionConfig(), storage, cache)
 
 	// Create session
@@ -539,7 +545,10 @@ func TestSessionManagerWithCacheMiss(t *testing.T) {
 
 func TestSessionManagerWithCacheDestroyInvalidatesCache(t *testing.T) {
 	storage := NewMockSessionStorage()
-	cache := NewInMemoryCache(5*time.Minute, 500)
+	cache := NewInMemoryCache(SessionCacheConfig{
+		TTL:     5 * time.Minute,
+		MaxSize: 500,
+	})
 	manager := NewSessionManager(DefaultSessionConfig(), storage, cache)
 
 	// Create and verify session (caches it)
@@ -571,7 +580,10 @@ func TestSessionManagerWithCacheDestroyInvalidatesCache(t *testing.T) {
 
 func TestSessionManagerWithCacheDestroyByIDInvalidatesCache(t *testing.T) {
 	storage := NewMockSessionStorage()
-	cache := NewInMemoryCache(5*time.Minute, 500)
+	cache := NewInMemoryCache(SessionCacheConfig{
+		TTL:     5 * time.Minute,
+		MaxSize: 500,
+	})
 	manager := NewSessionManager(DefaultSessionConfig(), storage, cache)
 
 	// Create and verify session (caches it)
@@ -592,7 +604,10 @@ func TestSessionManagerWithCacheDestroyByIDInvalidatesCache(t *testing.T) {
 
 func TestSessionManagerWithCacheDestroyAllUserSessionsClearsCache(t *testing.T) {
 	storage := NewMockSessionStorage()
-	cache := NewInMemoryCache(5*time.Minute, 500)
+	cache := NewInMemoryCache(SessionCacheConfig{
+		TTL:     5 * time.Minute,
+		MaxSize: 500,
+	})
 	manager := NewSessionManager(DefaultSessionConfig(), storage, cache)
 
 	// Create multiple sessions and cache them
@@ -623,7 +638,10 @@ func TestSessionManagerWithCacheDestroyAllUserSessionsClearsCache(t *testing.T) 
 
 func TestSessionManagerWithCacheExpiredInCache(t *testing.T) {
 	storage := NewMockSessionStorage()
-	cache := NewInMemoryCache(5*time.Minute, 500)
+	cache := NewInMemoryCache(SessionCacheConfig{
+		TTL:     5 * time.Minute,
+		MaxSize: 500,
+	})
 	config := SessionConfig{MaxAge: 100 * time.Millisecond}
 	manager := NewSessionManager(config, storage, cache)
 

@@ -6,7 +6,10 @@ import (
 )
 
 func TestInMemoryCacheGetSet(t *testing.T) {
-	cache := NewInMemoryCache(5*time.Minute, 500)
+	cache := NewInMemoryCache(SessionCacheConfig{
+		TTL:     5 * time.Minute,
+		MaxSize: 500,
+	})
 
 	session := &Session{
 		ID:        "session123",
@@ -39,7 +42,10 @@ func TestInMemoryCacheGetSet(t *testing.T) {
 }
 
 func TestInMemoryCacheGetNonExistent(t *testing.T) {
-	cache := NewInMemoryCache(5*time.Minute, 500)
+	cache := NewInMemoryCache(SessionCacheConfig{
+		TTL:     5 * time.Minute,
+		MaxSize: 500,
+	})
 
 	_, err := cache.Get("nonexistent")
 	if err != ErrCacheNotFound {
@@ -48,7 +54,10 @@ func TestInMemoryCacheGetNonExistent(t *testing.T) {
 }
 
 func TestInMemoryCacheExpiry(t *testing.T) {
-	cache := NewInMemoryCache(100*time.Millisecond, 500)
+	cache := NewInMemoryCache(SessionCacheConfig{
+		TTL:     100 * time.Millisecond,
+		MaxSize: 500,
+	})
 
 	session := &Session{
 		ID:        "session123",
@@ -81,7 +90,10 @@ func TestInMemoryCacheExpiry(t *testing.T) {
 }
 
 func TestInMemoryCacheDelete(t *testing.T) {
-	cache := NewInMemoryCache(5*time.Minute, 500)
+	cache := NewInMemoryCache(SessionCacheConfig{
+		TTL:     5 * time.Minute,
+		MaxSize: 500,
+	})
 
 	session := &Session{
 		ID:        "session123",
@@ -112,7 +124,10 @@ func TestInMemoryCacheDelete(t *testing.T) {
 }
 
 func TestInMemoryCacheDeleteNonExistent(t *testing.T) {
-	cache := NewInMemoryCache(5*time.Minute, 500)
+	cache := NewInMemoryCache(SessionCacheConfig{
+		TTL:     5 * time.Minute,
+		MaxSize: 500,
+	})
 
 	// Deleting non-existent key should not error
 	err := cache.Delete("nonexistent")
@@ -122,7 +137,10 @@ func TestInMemoryCacheDeleteNonExistent(t *testing.T) {
 }
 
 func TestInMemoryCacheClear(t *testing.T) {
-	cache := NewInMemoryCache(5*time.Minute, 500)
+	cache := NewInMemoryCache(SessionCacheConfig{
+		TTL:     5 * time.Minute,
+		MaxSize: 500,
+	})
 
 	session1 := &Session{ID: "session1", TokenHash: "hash1", CreatedAt: time.Now(), UpdatedAt: time.Now()}
 	session2 := &Session{ID: "session2", TokenHash: "hash2", CreatedAt: time.Now(), UpdatedAt: time.Now()}
@@ -165,7 +183,10 @@ func TestInMemoryCacheClear(t *testing.T) {
 }
 
 func TestInMemoryCacheMaxSize(t *testing.T) {
-	cache := NewInMemoryCache(5*time.Minute, 2) // Max 2 entries
+	cache := NewInMemoryCache(SessionCacheConfig{
+		TTL:     5 * time.Minute,
+		MaxSize: 2,
+	}) // Max 2 entries
 
 	session1 := &Session{ID: "session1", TokenHash: "hash1", CreatedAt: time.Now(), UpdatedAt: time.Now()}
 	session2 := &Session{ID: "session2", TokenHash: "hash2", CreatedAt: time.Now(), UpdatedAt: time.Now()}
@@ -204,7 +225,10 @@ func TestInMemoryCacheMaxSize(t *testing.T) {
 }
 
 func TestInMemoryCacheSize(t *testing.T) {
-	cache := NewInMemoryCache(5*time.Minute, 500)
+	cache := NewInMemoryCache(SessionCacheConfig{
+		TTL:     5 * time.Minute,
+		MaxSize: 500,
+	})
 
 	if cache.Size() != 0 {
 		t.Error("New cache should be empty")
@@ -232,7 +256,10 @@ func TestInMemoryCacheSize(t *testing.T) {
 }
 
 func TestInMemoryCacheConcurrentReadWrite(t *testing.T) {
-	cache := NewInMemoryCache(5*time.Minute, 500)
+	cache := NewInMemoryCache(SessionCacheConfig{
+		TTL:     5 * time.Minute,
+		MaxSize: 500,
+	})
 	done := make(chan bool, 200)
 
 	session := &Session{
@@ -267,7 +294,10 @@ func TestInMemoryCacheConcurrentReadWrite(t *testing.T) {
 }
 
 func TestInMemoryCacheConcurrentDelete(t *testing.T) {
-	cache := NewInMemoryCache(5*time.Minute, 500)
+	cache := NewInMemoryCache(SessionCacheConfig{
+		TTL:     5 * time.Minute,
+		MaxSize: 500,
+	})
 
 	// Pre-populate
 	for i := 0; i < 100; i++ {
