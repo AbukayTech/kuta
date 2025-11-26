@@ -28,7 +28,8 @@ var (
 
 	// Config errors
 
-	ErrAdapterRequired = errors.New("database adapter is required")
-	ErrSecretRequired  = errors.New("secret is required")
-	ErrSecretTooShort  = errors.New("secret must be at least 32 characters")
+	ErrDBAdapterRequired   = errors.New("database adapter is required")
+	ErrHTTPAdapterRequired = errors.New("http adapter is required")
+	ErrSecretRequired      = errors.New("secret is required")
+	ErrSecretTooShort      = errors.New("secret must be at least 32 characters")
 )
